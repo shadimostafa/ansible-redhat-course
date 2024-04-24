@@ -1,0 +1,17 @@
+---
+- name: check if user exists
+  hosts: localhost
+  tasks:
+    - name: check if shadi exists
+      user:
+        name: "{{ users.shadim.first_name }}"
+        state: present
+
+    - name: register and debug example
+      command:
+        cmd: date
+      register: todays_date
+
+    - debug:
+        var: todays_date
+
