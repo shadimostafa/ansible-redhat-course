@@ -1,0 +1,13 @@
+- name: echo shell
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: check the echo output
+      shell:
+        cmd: "echo bye"
+      register: command_result
+      changed_when: "'hello' in command_result.stdout"
+    - name: print the result
+      debug:
+        var: command_result
+      changed_when: "'hello' in command_result.stdout"

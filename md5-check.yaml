@@ -1,0 +1,16 @@
+- name: Examine localhost
+  hosts: localhost
+  gather_facts: false
+
+  tasks:
+
+    - name: verify md5
+      stat:
+        path: /home/shadi/playground/ansible/ansible-redhat-course/playbook.yaml
+        checksum_algorithm: md5
+      register: result
+      changed_when: false
+    
+    - debug:
+        msg: "The checksum is {{ result.stat.checksum }}"
+      changed_when: flase

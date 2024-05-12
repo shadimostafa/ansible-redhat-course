@@ -1,0 +1,8 @@
+- name: generate hosts file
+  hosts: all
+  gather_facts: yes
+  tasks:
+    - name: deploy hosts file
+      template:
+        src: ./jinja-hosts-template.j2
+        dest: ./generated-hosts-file

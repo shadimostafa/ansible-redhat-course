@@ -1,10 +1,13 @@
 ---
 - name: check if user exists
   hosts: localhost
+  vars_files:
+    - secret.yml
   tasks:
-    - name: check if shadi exists
+    - name: check if "{{ username }}" exists
       user:
-        name: "{{ users.shadim.first_name }}"
+#        name: "{{ users.shadim.first_name }}"
+        name: "{{ username }}"
         state: present
 
     - name: register and debug example
